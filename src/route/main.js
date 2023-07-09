@@ -1,18 +1,16 @@
 import React from "react";
-import GoogleTest from "../login/google";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-
+import GoogleTest from "../login/google";
+import DropBox from "../dropbox/Dropbox";
 
 const MainPage = () => {
-    
-
-    return (
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<GoogleTest />}>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    );
-}
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<GoogleTest />} />
+        <Route path="user" element={<DropBox />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 export default MainPage;

@@ -1,17 +1,18 @@
 import { GoogleLogin } from "@react-oauth/google";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import jwtDecode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 const GoogleTest = () => {
-  // const clientId = process.env.REACT_APP_CLIENT_ID;
-  const clientId ="1067524630700-26bll4iau9498v787t79u5eufk7rnpth.apps.googleusercontent.com";
-  const navigate = useNavigate(); //
+  const clientId = process.env.REACT_APP_CLIENT_ID;
+  const navigate = useNavigate();
   return (
     <>
       <GoogleOAuthProvider clientId={clientId}>
         <GoogleLogin
-          onSuccess={(res) => {
-            console.log(res);
+          onSuccess={(credentialResponse: any) => {
+            console.log(jwtDecode(credentialResponse.credential));
+
             navigate("/user");
           }}
           onFailure={(err) => {
